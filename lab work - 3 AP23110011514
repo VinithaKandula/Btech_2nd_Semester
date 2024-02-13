@@ -1,0 +1,54 @@
+1. implement linear search.
+#include <stdio.h>
+int linear_search(int arr[], int size, int target) {
+    for (int i = 0; i < size; i++) {
+        if (arr[i] == target) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+int main() {
+    int my_array[] = {5, 2, 9, 1, 7};
+    int target_num = 9;
+    int size = sizeof(my_array) / sizeof(my_array[0]);
+    int result = linear_search(my_array, size, target_num);
+    printf("The target number is found at index: %d\n", result);
+    return 0;
+}
+
+
+2.implement binary search.
+#include <stdio.h>
+
+int binary_search(int arr[], int low, int high, int target) {
+    while (low <= high) {
+        int mid = low + (high - low) / 2;
+
+        if (arr[mid] == target) {
+            return mid;
+        }
+        else if (arr[mid] < target) {
+            low = mid + 1;
+        }
+        else {
+            high = mid - 1;
+        }
+    }
+    return -1;
+}
+
+int main() {
+    int my_array[] = {1, 2, 5, 7, 9};
+    int target_num = 7;
+    int size = sizeof(my_array) / sizeof(my_array[0]);
+    int result = binary_search(my_array, 0, size - 1, target_num);
+    if (result == -1) {
+        printf("The target number is not found in the array.\n");
+    }
+    else {
+        printf("The target number is found at index: %d\n", result);
+    }
+    return 0;
+}
